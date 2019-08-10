@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RegistrationView from "./authentication/pages/RegistrationView";
+import HomePage from "./components/pages/HomePage";
+import RegistrationView from "./components/pages/RegistrationView";
+import Reports from "./components/pages/Reports";
+import Navbar from "./components/navbar/NavBar";
 
 class App extends Component {
   state = {
@@ -16,14 +18,25 @@ class App extends Component {
   render = () => {
     return (
       <BrowserRouter>
-        <div>
+        <header>
+          <Navbar />
+        </header>
+        <main>
           <Switch>
-            <Route exact path="/" component={HomePage} />
             <Route 
-                exact path="/register" 
-                render={(props) => <RegistrationView {...props} onRegisterFormSubmit={this.onRegisterFormSubmit} />} />
+              exact path="/" 
+              component={HomePage} 
+            />
+            <Route 
+              exact path="/register" 
+              render={(props) => <RegistrationView {...props} onRegisterFormSubmit={this.onRegisterFormSubmit} />} 
+            />
+            <Route 
+              exact path="/reports" 
+              component={Reports} 
+            />
           </Switch>
-        </div>
+        </main>
       </BrowserRouter>
     );
   }

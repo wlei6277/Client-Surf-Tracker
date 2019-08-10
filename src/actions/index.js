@@ -1,7 +1,7 @@
 import LocalAPI from "./../apis/local";
-import {REPORTS} from "./index";
+import {REPORTS} from "./types";
 
-export const fetchSurfReports = () => {
+export const fetchReports = () => {
   return async (dispatch, getState) => {
     const response = await LocalAPI("/reports");
 
